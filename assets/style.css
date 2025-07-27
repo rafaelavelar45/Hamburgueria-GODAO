@@ -1,0 +1,483 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+   
+}
+#chefinho{
+    animation: aceno 2s infinite;
+    user-select: none; /* evita seleção da imagem por acidente */
+    flex-shrink: 0; /* Impede que a imagem diminua demais */
+}
+
+/* Animação do chefinho acenando */
+@keyframes aceno {
+    
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(15deg); }
+  40% { transform: rotate(0deg); }
+  60% { transform: rotate(15deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+header{
+    background-color: #FDD835;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.menu-toggle {
+  font-size: 32px;
+  cursor: pointer;
+  color: #8B1D1D;
+  background: none;
+  display: none;
+  /*
+  position: relative;
+  z-index: 1100;
+  */
+}
+
+
+header img{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+#img-prin{
+  width: 350px;
+}
+
+nav li{
+    display: inline-block;
+    padding: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #8B1D1D;
+}
+
+nav{
+    text-align: center;
+    margin-top: -90px;
+}
+
+.principal{
+    background-color: #fdd835;
+    color: #8B1D1D;
+}
+
+.txt-prin{
+    display: flex; /* ativa o flexbox */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 20px; /* espaço entre a imgem eo texto */
+    font-family: 'Poppins'
+    
+}
+
+.txt-central{
+    font-size: 90px;
+    font-weight: 500;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre o texto e o chefinho */
+    flex-wrap: wrap; /* Permite quebra em telas pequenas */
+}
+
+.txt-auxliar {
+    font-size: 25px;
+    font-weight: 480;
+    text-align: center;
+}
+
+.secundaria{
+    width: 100%;
+    height: 60vh;
+    
+}
+
+
+
+.area-cardapio , #valores{
+  text-align: justify;
+  line-height: 2.5;
+}
+
+.area-cardapio h2{
+    padding: 20px;
+    
+}
+
+.area-cardapio{
+   
+    background-color: #C0392B;
+    padding: 20px;
+    
+}
+
+.area-cardapio li{
+    padding: 10px;
+    margin-left: 50px;
+    color: white;
+    position: relative;
+    padding-left: 20px;
+}
+
+
+.area-cardapio ul{
+    list-style-type: none;
+    
+}
+
+.area-cardapio h2{
+    text-align: center;
+    padding: 10px;
+    color: #FDD835;
+}
+
+.terceiro{
+    background-color: #C0392B;
+    padding: 70px;
+
+}
+
+.botao{
+    
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
+    background-color: #FDD835;
+    border-radius:20px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.466);
+}
+
+.botao p{
+    text-align: center;
+    line-height: 50px;
+    color: #8B1D1D;
+}
+
+footer{
+    background-color: #A93226;
+    color: white;
+    padding: 50px;
+
+}
+
+footer h2{
+    color: #FDD835;
+    padding: 10px;
+}
+
+footer p{
+    padding: 5px;
+}
+
+
+
+
+
+.icons{
+    vertical-align: middle;
+
+}
+
+.produto img{
+  width: 150px;
+  height: auto;
+}
+
+.produto{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  min-height: 450px;
+  background-color: #FDD835;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-sizing: border-box;
+  
+}
+
+#galeria{
+    display: grid;
+    grid-template-columns: repeat(3, 320px); /* FORÇA 3 COLUNAS DE LARGURA IGUAL */
+    justify-content: center;
+    gap: 20px; /* Aumentei um pouco o espaço para o visual ficar melhor */
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.comprar{
+  display: block;
+  width: 150px;
+  background-color: #8B1D1D;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #FDD835;
+  text-align: center;
+  
+  
+}
+
+.bot{
+  margin-top: auto;
+}
+
+.descricao{
+  flex-grow: 1;
+  margin: 10px 0;
+  color: #8B1D1D;
+  text-align: justify;
+}
+
+
+.preco{
+  
+  font-weight: 900;
+  font-size: 23px;
+  color: #8B1D1D;
+  margin-top: 10px;
+}
+
+
+
+.categoria{
+  margin-top: 10px;
+}
+
+.categoria a{
+  padding: 10px;
+  color:#FDD835 ;
+}
+
+.categoria a:hover{
+  color: #8B1D1D;
+}
+
+
+
+@media (max-width: 768px) {
+
+.categoria{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoria a{
+  padding: 10px;
+  color: #FDD835 ;
+}
+
+.categoria a:hover{
+  color: #8B1D1D;
+}  
+
+  .btn-sytle{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 50px;
+  font-size: 30px;
+  border-radius: 1px;
+  text-align: center;
+  line-height: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  display: block;
+  z-index: 1000;
+}
+#galeria {
+        grid-template-columns: 1fr; /* Muda para 1 coluna em telas menores */
+    }
+.menu-toggle {
+    display: block;
+    position: absolute; /* faz ele posiciona de forma absoluta , tenha total controle , utilizando top e rigth */
+    top: 10px;
+    right:20px;
+
+  }
+ 
+
+  .nav-principal {
+    position: fixed; /*a posição fica fixo na tela*/
+    top: 0; /* cola nav no topo*/
+    left: -260px; /*joga nav -260px para esquerda*/
+    width: 250px; /*tem ua largura de 250px */
+    height: 100vh; /* ocupa 100% do tamanha da view port */
+    background-color: #FDD835;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    transition: left  0.3s ease; /*cria uma transição suavi a esquerda */
+    z-index: 1000; /*sobre poe acima de todo conteudo do html , usa com position */
+    padding-top: 100px; /* vai ter um espaçamento interno de 50px do topo da tela */
+  }
+
+
+  nav.show { /* esta criando a classe para nav onde sera manipulado no JS */
+    left: 0; /* cola o lef no esquerdaa */
+  }
+
+  nav .fechar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    background: none;
+    color: #8B1D1D;
+    cursor: pointer;
+  }
+
+  header {
+    height: auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header img {
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  #img-prin{
+    width: 250px;
+  }
+
+  nav {
+    margin-top: 0; /* remove margin negativa */
+    text-align: center;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    gap: 20px;
+  }
+
+  nav li {
+    display: block;
+    padding: 5px 0;
+  }
+
+  .txt-prin {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 10px;
+  }
+
+  .txt-central {
+    font-size: 48px;
+    justify-content: center;
+  }
+
+  .txt-auxliar {
+    font-size: 18px;
+  }
+
+  .secundaria {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .lado-esquerdo,
+  .lado-direito {
+
+    width: 100%;
+   
+    margin: 0 auto;
+    
+  }
+
+  .lado-esquerdo h2,
+  .lado-direito h2 {   
+    margin-left: 0;
+  
+  }
+
+  .lado-esquerdo p,
+  .lado-direito p,
+  .lado-direito li {
+    font-size: 16px;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .lado-esquerdo p, #valores{
+    text-align: justify;
+    line-height: 2.5;
+  }
+
+  .lado-direito ul {
+    padding-left: 0;
+  }
+
+  .botao {
+    width: 90%;
+    max-width: 400px;
+  }
+
+  #chefinho {
+    width: 60px;
+  }
+
+  footer {
+    padding: 30px 10px;
+    text-align: center;
+  }
+
+  footer h2 {
+    font-size: 20px;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+}
+
+/* Para telas maiores (PC), mantém seu design atual e centraliza menu horizontal */
+@media (min-width: 768px) {
+
+ 
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav .fechar{
+    display: none;
+  }
+
+  nav li {
+    display: inline-block;
+    padding: 10px;
+  }
+  .secundaria {
+    height: auto;
+  }
+
+  .area-cardapio h2{
+    word-spacing: 10px; /*cria espaçamento entre palavras */
+  }
+}
