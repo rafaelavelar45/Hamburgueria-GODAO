@@ -198,6 +198,16 @@ footer p{
   height: auto;
 }
 
+img{
+  width: 150px;
+  height: auto;
+  padding:20px;
+}
+
+.terceiro{
+  text-align: center;
+}
+
 .produto{
   display: flex;
   flex-direction: column;
@@ -210,6 +220,12 @@ footer p{
   text-align: center;
   box-sizing: border-box;
   
+}
+
+.tot {
+ font-size: 18px;
+ font-weight:500;
+ color: #FDD835;
 }
 
 #galeria{
@@ -287,7 +303,7 @@ footer p{
   color: #8B1D1D;
 }  
 
-  .btn-sytle{
+ .btn-sytle{
   position: fixed;
   bottom: 0;
   right: 0;
@@ -302,17 +318,49 @@ footer p{
   display: block;
   z-index: 1000;
 }
-#galeria {
-        grid-template-columns: 1fr; /* Muda para 1 coluna em telas menores */
+  #galeria {
+      grid-template-columns: 1fr; /* Muda para 1 coluna em telas menores */
     }
-.menu-toggle {
+  .menu-toggle {
     display: block;
     position: absolute; /* faz ele posiciona de forma absoluta , tenha total controle , utilizando top e rigth */
     top: 10px;
     right:20px;
 
   }
- 
+ .produto{
+   display: flex; /* ativa o flexbox */
+   flex-direction: column; /* muda a direção para coluna */
+   align-items: center;
+   justify-content: flex-start; /* Alinha os itens no início do produto */
+   width: 100%; /* ocupa toda a largura do produto */ 
+   max-width: 320px; /* largura máxima do produto */
+   height: auto; /* altura automática para se ajustar ao conteúdo */
+   padding: 10px; /* espaçamento interno */
+   box-sizing: border-box; /* inclui padding e border no cálculo da largura e altura */
+
+  }
+  
+  
+
+  .produto img {
+    width: 100%; /* faz a imagem ocupar toda a largura do produto */
+    height: auto; /* mantém a proporção da imagem */ 
+    border-radius: 8px; /* arredonda os cantos da imagem */
+  }
+
+  .produto .descricao {
+    font-size: 14px; /* reduz o tamanho da fonte para telas menores */
+  }
+
+  .produto .preco {
+    font-size: 18px; /* reduz o tamanho da fonte do preço */
+  }
+
+  .produto .comprar {
+    width: calc(100% - 20px); /* ocupa quase toda a largura, menos as bordas */
+    margin-top: 10px; /* adiciona um espaçamento acima do botão de compra */
+ }
 
   .nav-principal {
     position: fixed; /*a posição fica fixo na tela*/
@@ -397,8 +445,7 @@ footer p{
     height: auto;
   }
 
-  .lado-esquerdo,
-  .lado-direito {
+  .area-cardapio{
 
     width: 100%;
    
@@ -406,29 +453,26 @@ footer p{
     
   }
 
-  .lado-esquerdo h2,
-  .lado-direito h2 {   
+  .lado-esquerdo h2{   
     margin-left: 0;
   
   }
 
-  .lado-esquerdo p,
-  .lado-direito p,
-  .lado-direito li {
+  .area-cardapio p{
     font-size: 16px;
     margin-left: 0;
     padding-left: 0;
   }
 
-  .lado-esquerdo p, #valores{
+  .area-cardapio p, #valores{
     text-align: justify;
     line-height: 2.5;
   }
-
+/*
   .lado-direito ul {
     padding-left: 0;
   }
-
+*/
   .botao {
     width: 90%;
     max-width: 400px;

@@ -7,6 +7,11 @@ const galeria = document.getElementById('galeria')
 const btnHamburguer = document.getElementById('btn-hamburguer')
 const btnRefri = document.getElementById('btn-refrigerante')
 const btnTodos = document.getElementById('btn-todos')
+const resumo = document.getElementById('resumo') // Seleciona o elemento com id 'resumo' para exibir o resumo do pedido
+const carrinho = [] // Inicializa um array vazio para armazenar os itens do carrinho
+let tot = document.getElementById('tot') // Seleciona o elemento com id 'total' para exibir o total do carrinho
+
+
 const produtos  = [
      {
         Categoria: 'Refrigerantes',
@@ -117,6 +122,27 @@ meuToggle.addEventListener('click', () =>{ // pega minha constante meuToggle que
 
 fechar.addEventListener('click' , function() {
     nav.classList.remove('show') // se ja tem a classe show remove 
+})
+
+galeria.addEventListener('click', (event) => {
+    event.preventDefault() // Impede o comportamento padrão do link
+    if (event.target.classList.contains('comprar')) {
+        const card = event.target.closest('.produto'); // Encontra o card mais próximo do elemento clicado
+        const nomeProdutro = card.querySelector('h3').textContent // Acessa o nome do produto dentro do card  
+        const precoProduto = card.querySelector('.preco').textContent   // Acessa o preco do produto dentro do card
+        resumo.style.color = '#FFD700'; // Define a cor do texto do resumo 
+        let total = 0; // Inicializa a variável total
+        carrinho.push({ nome: nomeProdutro, preco: precoProduto}); // Adiciona o produto ao carrinh
+        carrinho.forEach(produtos =>{
+            let precoLimpo = produtos.preco.replace('R$', '').replace(',', '.').trim(); // Limpa o texto do preço para converter corretamente   
+            total += parseFloat(precoLimpo); // Converte o preço para número e adiciona ao total
+        })
+        resumo.innerHTML += `<p>${nomeProdutro} - R$ ${precoProduto}</p>`;
+        tot.innerHTML = ''; // Limpa o conteúdo anterior do total
+        tot.innerHTML += `<p>Total: R$ ${total}`
+        tot.classList.add('tot') // Adiciona a classe 'tot' para estilizar o total
+
+    }
 })
 
  function controlaSeta(){
