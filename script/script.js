@@ -2,14 +2,14 @@ const meuToggle = document.querySelector('#menu-toggle')
 const nav = document.getElementById('nav')
 const fechar = document.querySelector('.fechar')
 const setaTopo = document.querySelector('#btn-inicio')
-
 const galeria = document.getElementById('galeria')
 const btnHamburguer = document.getElementById('btn-hamburguer')
 const btnRefri = document.getElementById('btn-refrigerante')
 const btnTodos = document.getElementById('btn-todos')
 const resumo = document.getElementById('resumo') // Seleciona o elemento com id 'resumo' para exibir o resumo do pedido
-const carrinho = [] // Inicializa um array vazio para armazenar os itens do carrinho
+let carrinho = [] // Inicializa um array vazio para armazenar os itens do carrinho
 let tot = document.getElementById('tot') // Seleciona o elemento com id 'total' para exibir o total do carrinho
+const bottot = document.getElementById('botaofin')
 
 
 const produtos  = [
@@ -99,7 +99,14 @@ btnHamburguer.addEventListener('click', (event) =>{
     renderizaProdutos(produtoFiltrado) // executa a função de renderiza produtos (com novo parametro produto filtrado)
 })
 
-
+bottot.addEventListener('click', () =>{
+    if(resumo.innerHTML == ''){
+        resumo.innerHTML = 'Carrinho nao tem produtos para finalizar'
+    }else{
+        resumo.innerHTML = ''
+         tot.innerHTML = ''
+    }
+})
 
 btnRefri.addEventListener('click', (event) => {
     event.preventDefault()
@@ -124,45 +131,64 @@ fechar.addEventListener('click' , function() {
     nav.classList.remove('show') // se ja tem a classe show remove 
 })
 
-galeria.addEventListener('click', (event) => {
-    event.preventDefault() // Impede o comportamento padrão do link
+document.body.addEventListener('click', (event) => {
+    
+     // Impede o comportamento padrão do link
     if (event.target.classList.contains('comprar')) {
+          event.preventDefault()
         const card = event.target.closest('.produto'); // Encontra o card mais próximo do elemento clicado
         const nomeProdutro = card.querySelector('h3').textContent // Acessa o nome do produto dentro do card  
         const precoProduto = card.querySelector('.preco').textContent   // Acessa o preco do produto dentro do card
-        resumo.style.color = '#FFD700'; // Define a cor do texto do resumo 
         let total = 0; // Inicializa a variável total
         carrinho.push({ nome: nomeProdutro, preco: precoProduto}); // Adiciona o produto ao carrinh
         carrinho.forEach(produtos =>{
             let precoLimpo = produtos.preco.replace('R$', '').replace(',', '.').trim(); // Limpa o texto do preço para converter corretamente   
             total += parseFloat(precoLimpo); // Converte o preço para número e adiciona ao total
         })
-        resumo.innerHTML += `<p>${nomeProdutro} - R$ ${precoProduto}</p>`;
         tot.innerHTML = ''; // Limpa o conteúdo anterior do total
-        tot.innerHTML += `<p>Total: R$ ${total}`
+        tot.innerHTML += `<p>Total: R$ ${total.toFixed(2).replace('.', ',').trim()}`
         tot.classList.add('tot') // Adiciona a classe 'tot' para estilizar o total
-
+        resumo.innerHTML += `<p>${nomeProdutro} - R$ ${precoProduto} <a href="#" class='remov'>Remover</a> </p>`;
     }
-})
-
- function controlaSeta(){
-    const larguraTela = window.innerWidth
-    if(larguraTela >= 768){
-        setaTopo.style.display = 'none'
-        return //para função
+    if(event.target.classList.contains('remov')){
+        event.preventDefault()
+        const linha = event.target.closest('p') // pega o paragrafo onde ta o produto ea botao a
+        const texto = linha.textContent // pega o texto completo desse paragrafo
+        const nomeRemovido = texto.split(' - ')[0].trim()
+        const indexParaRemover = carrinho.findIndex(item => item.nome === nomeRemovido)
+        if(indexParaRemover > -1){
+            carrinho.splice(indexParaRemover, 1)
+        }
+        let total = 0
+        carrinho.forEach(produtos =>{
+            let precoLimpo = produtos.preco.replace('R$', '').replace(',', '.').trim(); // Limpa o texto do preço para converter corretamente   
+            total += parseFloat(precoLimpo); // Converte o preço para número e adiciona ao total
+            console.log(carrinho[produtos])
+        })
+         tot.innerHTML = ''; // Limpa o conteúdo anterior do total
+         tot.innerHTML += `<p>Total: R$ ${total.toFixed(2).replace('.', ',').trim()}`
+        linha.remove()
         
     }
-    if(window.scrollY < 250){ // esta dizendo que toda minha tela visivel quando scrola < 250 executa função mo caso a seta fica invisivel
-        setaTopo.style.display = 'none'
-    } else if(window.scrollY >= 250 && window.scrollY <= 2100){ // aqui se o scrol for maior que 250 e menor q 2100 aparece com cores vemrelho e amarelo
-        setaTopo.style.display = 'block'
-        setaTopo.style.background = '#8B1D1D'
-        setaTopo.style.color = '#FFD700'
-    }else{ // caso nao for nenhuma das condições executa essa bloco
-        setaTopo.style.display = 'block'
-        setaTopo.style.background = '#FFD700'
-        setaTopo.style.color = '#8B1D1D'
-    }      
+})
+    function controlaSeta(){
+        const larguraTela = window.innerWidth
+        if(larguraTela >= 768){
+            setaTopo.style.display = 'none'
+            return //para função
+            
+        }
+        if(window.scrollY < 250){ // esta dizendo que toda minha tela visivel quando scrola < 250 executa função mo caso a seta fica invisivel
+            setaTopo.style.display = 'none'
+        } else if(window.scrollY >= 250 && window.scrollY <= 2100){ // aqui se o scrol for maior que 250 e menor q 2100 aparece com cores vemrelho e amarelo
+            setaTopo.style.display = 'block'
+            setaTopo.style.background = '#8B1D1D'
+            setaTopo.style.color = '#FFD700'
+        }else{ // caso nao for nenhuma das condições executa essa bloco
+            setaTopo.style.display = 'block'
+            setaTopo.style.background = '#FFD700'
+            setaTopo.style.color = '#8B1D1D'
+        }      
 }
     // Chamar ao rolar
     window.addEventListener('scroll', controlaSeta)
@@ -174,4 +200,4 @@ galeria.addEventListener('click', (event) => {
 
         renderizaProdutos(produtosIniciais)
     })
-    
+    console.log(carrinho)
